@@ -6,5 +6,21 @@
 </head>
 <body>
     test info 123
+    <span id="s1">count</span>
+    <script>
+        function testBin() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://infobins.github.io/images/i1.jpg');
+            xhr.responseType = 'arraybuffer';
+            xhr.onload = function () {
+                var buffer = new Uint8Array(xhr.response);
+                document.getElementById('s1').innerHTML = buffer.length;
+            }
+            //xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+
+            xhr.send();
+        }
+
+    </script>
 </body>
 </html>
