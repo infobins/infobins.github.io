@@ -9,9 +9,9 @@
     <button onclick="testBin()">TEST</button>
     <span id="s1">count</span>
 
-    <!--<br /><br /><br /><br />
+    <br /><br /><br /><br />
     <button onclick="testREFRESHTOKEN()">REFRESH TOKEN</button><br /><br /><br /><br />
-    <input type="text" id="txt3" />-->
+    <input type="text" id="txt3" />
     <script>
         function testBin() {
             for (var i = 0; i < 12; i++) {
@@ -28,32 +28,32 @@
             }
         }
 
-        //function testREFRESHTOKEN() {
+        function testREFRESHTOKEN() {
 
-        //    var myHeaders = new Headers();
-        //    myHeaders.append("Origin", "http://localhost:54302/");
-        //    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-        //    //myHeaders.append("Cookie", "buid=0.AUsAfCQh73AltUePxRsVb-wvuZDBtaj-JGxFpNXkweoYtkhLAAA.AQABAAEAAAD--DLA3VO7QrddgJg7WevrX3i2vvDSLDqb_N1CzwkfAGl3lu2VlYn8vOxw2DNI5oEw0OIKbkPCMzy1WsSEmzy5eAYRIwD0HjzJ0L__R6wMlmyE0KLis78Xi9php0KO5k4gAA; esctx=PAQABAAEAAAD--DLA3VO7QrddgJg7WevrPV9n7ZrFQVTiZsnNF704OdvFOHk9K8UztDuXNoQdprDDvsRWBuP-RsogVUvJkvyUBwDnyObVEi750abS1m1kvihulpbY73bJBoZzr-wnoB_0-QktowGGsdOb4YJvqpYS_RmAiG9M1Kqm-zjbH4e8ijQ2AkjCbGE42kIGEFh45jkgAA; fpc=Ao9J-OaCnYNOryt5fgyfWBd5dR20BAAAAP3yctsOAAAAiPxCogEAAACJ83LbDgAAAD8sxpEGAAAAxvNy2w4AAAA; stsservicecookie=estsfd; x-ms-gateway-slice=estsfd");
+            var myHeaders = new Headers();
+            myHeaders.append("Origin", "http://localhost:54302/");
+            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+            //myHeaders.append("Cookie", "buid=0.AUsAfCQh73AltUePxRsVb-wvuZDBtaj-JGxFpNXkweoYtkhLAAA.AQABAAEAAAD--DLA3VO7QrddgJg7WevrX3i2vvDSLDqb_N1CzwkfAGl3lu2VlYn8vOxw2DNI5oEw0OIKbkPCMzy1WsSEmzy5eAYRIwD0HjzJ0L__R6wMlmyE0KLis78Xi9php0KO5k4gAA; esctx=PAQABAAEAAAD--DLA3VO7QrddgJg7WevrPV9n7ZrFQVTiZsnNF704OdvFOHk9K8UztDuXNoQdprDDvsRWBuP-RsogVUvJkvyUBwDnyObVEi750abS1m1kvihulpbY73bJBoZzr-wnoB_0-QktowGGsdOb4YJvqpYS_RmAiG9M1Kqm-zjbH4e8ijQ2AkjCbGE42kIGEFh45jkgAA; fpc=Ao9J-OaCnYNOryt5fgyfWBd5dR20BAAAAP3yctsOAAAAiPxCogEAAACJ83LbDgAAAD8sxpEGAAAAxvNy2w4AAAA; stsservicecookie=estsfd; x-ms-gateway-slice=estsfd");
 
-        //    var urlencoded = new URLSearchParams();
-        //    urlencoded.append("grant_type", "refresh_token");
-        //    urlencoded.append("client_id", "79308c69-c156-4134-bd09-4326882ed97e");
-        //    urlencoded.append("scope", "User.Read openid profile offline_access");
-        //    urlencoded.append("refresh_token", "M.R3_BL2.-CRZKyOmCEXM5F85zXvS8FVWiQQK!8wu2bYibRS6zcCTUrTkmLNnNy4wO6JUjKMq2JauauwytdWKs6B7TQaeDUtzph1*SrITClFLsWBOAlq3k3XkA4VNHHnEVoIN0Vgch!0JT1KKudJoNLdhbIwPrag7ACnCHMhoRyK7nfqE4Ev*7x2OGEE2rot946RKIQbaxJUiWr1GYOrB026HWcCTE1th2p3jGPgYL!fM*ipOjZ0aIHDOWSxHpY*XuCr!uz9ho43UEcTyqn6PxrqfiF3TqVIZw44iqqtuB7ca4HK9LZ7FUwxnYn1TGF032yAOZGJkMZN9qT8kI6oPpOA9srt8nJEs$");
+            var urlencoded = new URLSearchParams();
+            urlencoded.append("grant_type", "refresh_token");
+            urlencoded.append("client_id", "79308c69-c156-4134-bd09-4326882ed97e");
+            urlencoded.append("scope", "User.Read openid profile offline_access");
+            urlencoded.append("refresh_token", "M.R3_BL2.-CRZKyOmCEXM5F85zXvS8FVWiQQK!8wu2bYibRS6zcCTUrTkmLNnNy4wO6JUjKMq2JauauwytdWKs6B7TQaeDUtzph1*SrITClFLsWBOAlq3k3XkA4VNHHnEVoIN0Vgch!0JT1KKudJoNLdhbIwPrag7ACnCHMhoRyK7nfqE4Ev*7x2OGEE2rot946RKIQbaxJUiWr1GYOrB026HWcCTE1th2p3jGPgYL!fM*ipOjZ0aIHDOWSxHpY*XuCr!uz9ho43UEcTyqn6PxrqfiF3TqVIZw44iqqtuB7ca4HK9LZ7FUwxnYn1TGF032yAOZGJkMZN9qT8kI6oPpOA9srt8nJEs$");
 
-        //    var requestOptions = {
-        //        method: 'POST',
-        //        headers: myHeaders,
-        //        body: urlencoded,
-        //        redirect: 'follow'
-        //    };
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: urlencoded,
+                redirect: 'follow'
+            };
 
-        //    fetch("https://login.microsoftonline.com/consumers/oauth2/v2.0/token", requestOptions)
-        //        .then(response => response.text())
-        //        .then(result => { document.getElementById('txt3').value = result; })
-        //        .catch(error => console.log('error', error));
+            fetch("https://login.microsoftonline.com/consumers/oauth2/v2.0/token", requestOptions)
+                .then(response => response.text())
+                .then(result => { document.getElementById('txt3').value = result; })
+                .catch(error => console.log('error', error));
 
-        //}
+        }
 
     </script>
 </body>
