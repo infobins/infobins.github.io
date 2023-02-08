@@ -10,11 +10,15 @@
     <script>
         document.getElementById('txt1').value = '';
         var miliStart = parseInt(new Date().getTime());
-        fetch('https://infobinaa.bsite.net/b1').then(r => r.text()).then(t => {
-            var miliEnd = parseInt(new Date().getTime());
-            document.getElementById('txt1').value = (miliEnd - miliStart);
 
-        });
+        var cnt = 5;
+        for (var i = 0; i < cnt; i++) {
+            fetch('https://infobinaa.bsite.net/a'+i+'.png').then(r => r.arrayBuffer()).then(t => {
+                var miliEnd = parseInt(new Date().getTime());
+                document.getElementById('txt1').value = (miliEnd - miliStart);
+
+            });
+        }
 
     </script>
 </body>
