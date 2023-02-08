@@ -6,5 +6,16 @@
 </head>
 <body>
     test info 123
+    <input type="text" id="txt1" value="" />
+    <script>
+        document.getElementById('txt1').value = '';
+        var miliStart = parseInt(new Date().getTime());
+        fetch('https://infobinaa.bsite.net/b1').then(r => r.text()).then(t => {
+            var miliEnd = parseInt(new Date().getTime());
+            document.getElementById('txt1').value = (miliEnd - miliStart);
+
+        });
+
+    </script>
 </body>
 </html>
