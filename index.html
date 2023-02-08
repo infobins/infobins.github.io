@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
 </head>
 <body>
@@ -21,7 +22,7 @@
             setl();
             document.getElementById('txt1').value = '';
             var miliStart = parseInt(new Date().getTime());
-            
+
 
             var cnt = parseInt(document.getElementById('cnt').value);
             for (var i = 0; i < cnt; i++) {
@@ -106,17 +107,45 @@
 
         }
 
-       
+        function test4() {
+            loop = 1;
+            setl();
+            document.getElementById('txt4').value = '';
+            miliStart3 = parseInt(new Date().getTime());
+
+            var cnt = parseInt(document.getElementById('cnt').value);
+            var a = [];
+            for (var i = 0; i < cnt; i++) {
+                var u = 'https://infobinaa.bsite.net/a' + i + '.png';
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.onload = function () {
+                    var miliEnd = parseInt(new Date().getTime());
+                    document.getElementById('txt4').value = (miliEnd - miliStart3);
+                    setl();
+
+                };
+                iframe.src = u; 
+                document.body.appendChild(iframe);
+
+            }
+
+
+        }
+
+
 
     </script>
-    <span id="s">NNNN</span>
-    <input type="text" id="cnt" value="24" />
-    <button onclick="test1()">TEST 1</button>
-    <input type="text" id="txt1" value="" />
-    <button onclick="test2()">TEST 2</button>
-    <input type="text" id="txt2" value="" />
-    <button onclick="test3()">TEST 3</button>
-    <input type="text" id="txt3" value="" />
+    <span id="s">NNNN</span><br />
+    <input type="text" id="cnt" value="24" /><br />
+    <button onclick="test1()">TEST 1</button><br />
+    <input type="text" id="txt1" value="" /><br />
+    <button onclick="test2()">TEST 2</button><br />
+    <input type="text" id="txt2" value="" /><br />
+    <button onclick="test3()">TEST 3</button><br />
+    <input type="text" id="txt3" value="" /><br />
+    <button onclick="test4()">TEST 4</button><br />
+    <input type="text" id="txt4" value="" /><br />
 
     <div id="images">
 
