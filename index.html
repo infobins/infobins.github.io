@@ -9,22 +9,34 @@
 
     <script>
 
+        function setl() {
+
+            document.getElementById('s').innerHTML = loop;
+            loop++;
+        }
+
+        var loop = 1;
         function test1() {
+            loop = 1;
+            setl();
             document.getElementById('txt1').value = '';
             var miliStart = parseInt(new Date().getTime());
+            
 
             var cnt = parseInt(document.getElementById('cnt').value);
             for (var i = 0; i < cnt; i++) {
                 fetch('https://infobinaa.bsite.net/a' + i + '.png').then(r => r.arrayBuffer()).then(t => {
                     var miliEnd = parseInt(new Date().getTime());
                     document.getElementById('txt1').value = (miliEnd - miliStart);
-
+                    setl();
                 });
             }
         }
 
         function test2() {
-            document.getElementById('txt1').value = '';
+            loop = 1;
+            setl();
+            document.getElementById('txt2').value = '';
             var miliStart = parseInt(new Date().getTime());
 
             var cnt = parseInt(document.getElementById('cnt').value);
@@ -32,18 +44,83 @@
             fetch('https://infobinaa.bsite.net/test2?cnt=' + cnt).then(r => r.text()).then(t => {
                 var miliEnd = parseInt(new Date().getTime());
                 document.getElementById('txt2').value = (miliEnd - miliStart);
+                loop = cnt + 1;
+                setl();
 
             });
-            
+
         }
 
-    </script>
+        function il() {
+            var miliEnd = parseInt(new Date().getTime());
+            document.getElementById('txt3').value = (miliEnd - miliStart3);
+            setl();
+        }
 
-    <input type="text" id="cnt" value="5" />
+        const limg = function loadImage(url, elem) {
+            return new Promise((resolve, reject) => {
+                elem.onload = function () {
+                    il()
+                    resolve(elem);
+                };
+                elem.onerror = reject;
+                elem.src = url;
+            });
+        }
+
+
+        var miliStart3;
+
+
+
+        function test3() {
+            loop = 1;
+            setl();
+            document.getElementById('txt3').value = '';
+            miliStart3 = parseInt(new Date().getTime());
+
+            var cnt = parseInt(document.getElementById('cnt').value);
+            var a = [];
+            for (var i = 0; i < cnt; i++) {
+                var u = 'https://infobinaa.bsite.net/a' + i + '.png';
+                var image = new Image();
+                image.src = u;
+
+            }
+
+            setTimeout(function () {
+                var cnt = parseInt(document.getElementById('cnt').value);
+                var a = [];
+                for (var i = 0; i < cnt; i++) {
+                    fetch(u).then(r => r.arrayBuffer()).then(t => {
+                        var miliEnd = parseInt(new Date().getTime());
+                        document.getElementById('txt3').value = (miliEnd - miliStart3);
+                        setl();
+
+                    });
+
+                }
+            }, 3);
+
+
+
+        }
+
+       
+
+    </script>
+    <span id="s">NNNN</span>
+    <input type="text" id="cnt" value="24" />
     <button onclick="test1()">TEST 1</button>
     <input type="text" id="txt1" value="" />
     <button onclick="test2()">TEST 2</button>
     <input type="text" id="txt2" value="" />
+    <button onclick="test3()">TEST 3</button>
+    <input type="text" id="txt3" value="" />
+
+    <div id="images">
+
+    </div>
 
 </body>
 </html>
