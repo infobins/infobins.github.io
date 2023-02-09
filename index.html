@@ -8,7 +8,11 @@
 <body>
     test info
 
+
+
     <script>
+
+        var ur = 'https://infobinaa.bsite.net/a';
 
         function setl() {
 
@@ -26,7 +30,7 @@
 
             var cnt = parseInt(document.getElementById('cnt').value);
             for (var i = 0; i < cnt; i++) {
-                fetch('https://infobinaa.bsite.net/a' + i + '.png').then(r => r.arrayBuffer()).then(t => {
+                fetch(ur + i + '.png').then(r => r.arrayBuffer()).then(t => {
                     var miliEnd = parseInt(new Date().getTime());
                     document.getElementById('txt1').value = (miliEnd - miliStart);
                     setl();
@@ -83,7 +87,7 @@
             var cnt = parseInt(document.getElementById('cnt').value);
             var a = [];
             for (var i = 0; i < cnt; i++) {
-                var u = 'https://infobinaa.bsite.net/a' + i + '.png';
+                var u = ur + i + '.png';
                 var image = new Image();
                 image.src = u;
 
@@ -116,7 +120,7 @@
             var cnt = parseInt(document.getElementById('cnt').value);
             var a = [];
             for (var i = 0; i < cnt; i++) {
-                var u = 'https://infobinaa.bsite.net/a' + i + '.png';
+                var u = ur + i + '.png';
                 var iframe = document.createElement('iframe');
                 iframe.style.display = 'none';
                 iframe.onload = function () {
@@ -125,7 +129,7 @@
                     setl();
 
                 };
-                iframe.src = u; 
+                iframe.src = u;
                 document.body.appendChild(iframe);
 
             }
@@ -134,17 +138,25 @@
         }
 
 
+        function ne(f) {
+            u = 'https://infobins.github.io/images/s/a';
+            f();
+        }
+
 
     </script>
+
+
+
     <span id="s">NNNN</span><br />
     <input type="text" id="cnt" value="24" /><br />
-    <button onclick="test1()">TEST 1</button><br />
+    <button onclick="test1()">TEST 1</button> <button onclick="ne(test1)">TEST 1 N</button><br />
     <input type="text" id="txt1" value="" /><br />
-    <button onclick="test2()">TEST 2</button><br />
+    <button onclick="test2()">TEST 2</button><button onclick="ne(test2)">TEST 2 N</button><br />
     <input type="text" id="txt2" value="" /><br />
-    <button onclick="test3()">TEST 3</button><br />
+    <button onclick="test3()">TEST 3</button><button onclick="ne(test3)">TEST 3 N</button><br />
     <input type="text" id="txt3" value="" /><br />
-    <button onclick="test4()">TEST 4</button><br />
+    <button onclick="test4()">TEST 4</button><button onclick="ne(test4)">TEST 4 N</button><br />
     <input type="text" id="txt4" value="" /><br />
 
     <div id="images">
