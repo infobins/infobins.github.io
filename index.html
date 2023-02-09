@@ -12,8 +12,6 @@
 
     <script>
 
-        var ur = 'https://infobinaa.bsite.net/a';
-
         function setl() {
 
             document.getElementById('s').innerHTML = loop;
@@ -143,6 +141,11 @@
             f();
         }
 
+        function n(f) {
+            ur = 'https://infobinaa.bsite.net/a';
+            f();
+        }
+
 
     </script>
 
@@ -150,13 +153,13 @@
 
     <span id="s">NNNN</span><br />
     <input type="text" id="cnt" value="24" /><br />
-    <button onclick="test1()">TEST 1</button> <button onclick="ne(test1)">TEST 1 N</button><br />
+    <button onclick="n(test1)">TEST 1</button> <button onclick="ne(test1)">TEST 1 N</button><br />
     <input type="text" id="txt1" value="" /><br />
-    <button onclick="test2()">TEST 2</button><button onclick="ne(test2)">TEST 2 N</button><br />
+    <button onclick="n(test2)">TEST 2</button><button onclick="ne(test2)">TEST 2 N</button><br />
     <input type="text" id="txt2" value="" /><br />
-    <button onclick="test3()">TEST 3</button><button onclick="ne(test3)">TEST 3 N</button><br />
+    <button onclick="n(test3)">TEST 3</button><button onclick="ne(test3)">TEST 3 N</button><br />
     <input type="text" id="txt3" value="" /><br />
-    <button onclick="test4()">TEST 4</button><button onclick="ne(test4)">TEST 4 N</button><br />
+    <button onclick="n(test4)">TEST 4</button><button onclick="ne(test4)">TEST 4 N</button><br />
     <input type="text" id="txt4" value="" /><br />
 
     <div id="images">
