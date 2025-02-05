@@ -166,5 +166,128 @@
 
     </div>
 
+    <div>
+        <video id="video2" controls width="400">
+
+        </video>
+
+    </div>
+
+    <script type="text/javascript">
+
+
+        //    const mimeCodec = 'video/mp4; codecs="avc1.64001F"';
+        //let mediaSource;
+
+        //if ('MediaSource' in window && MediaSource.isTypeSupported(mimeCodec)) {
+
+        //} else {
+        //  alert('NE');
+        //}
+
+
+        (function () {
+            //const mimeCodec = 'video/mp4; codecs="avc1.4d401f"';
+            //var baseUrl = 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/video/720_2400000/dash/';
+            //var templateUrl = baseUrl + 'segment_$Number$.m4s';
+            //var index = 0;
+            //var initUrl = baseUrl + 'init.mp4';
+
+            const mimeCodec = 'video/mp4; codecs="avc1.64001F, mp4a.40.2"';
+            //const mimeCodec = 'video/mp4; codecs="avc1.42C01F, mp4a.6B"';
+            var baseUrl = 'v/';
+            var templateUrl = baseUrl + 'mv_$Number$.m4s?v=3';
+            var index = 1;
+            var initUrl = baseUrl + 'mv_init.mp4?v=3';
+
+            //const mimeCodec = 'video/mp4; codecs="avc1.64001F, mp4a.40.2"';
+            ////const mimeCodec = 'video/mp4; codecs="avc1.42C01F, mp4a.6B"';
+            //var baseUrl = '/video/dash2/';
+            //var templateUrl = baseUrl + 'output_00$Number$.mp4';
+            //var index = 1;
+            //var initUrl = baseUrl + 'output_000.mp4';
+
+
+
+            var sourceBuffer;
+            var numberOfChunks = 52;
+            var video = document.getElementById('video2');
+
+            if (!window.MediaSource) {
+                console.error('No Media Source API available');
+                return;
+            }
+
+            var ms = new MediaSource();
+            video.src = window.URL.createObjectURL(ms);
+            ms.addEventListener('sourceopen', onMediaSourceOpen);
+
+            function onMediaSourceOpen() {
+                //ms.duration = 4356;
+                sourceBuffer = ms.addSourceBuffer(mimeCodec);
+                sourceBuffer.addEventListener('updateend', nextSegment);
+
+                GET(initUrl, appendToBuffer);
+                // nextSegment();
+                //     nextSegment();
+                //video.play();
+            }
+
+            function nextSegment() {
+                setTimeout(function () {
+                    //if(index == 2){ index++;}
+                    var url = templateUrl.replace('$Number$', index);
+                    GET(url, appendToBuffer);
+                    index++;
+                    if (index > numberOfChunks) {
+                        sourceBuffer.removeEventListener('updateend', nextSegment);
+                    }
+
+                }, 2000);
+            }
+
+            function pad(n, width, z) {
+                z = z || '0';
+                n = n + '';
+                return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+            }
+
+            function appendToBuffer(videoChunk) {
+                if (videoChunk) {
+                    var arr = new Uint8Array(videoChunk);
+                    // for(var z=0; z<arr.length; z++)
+                    // {
+                    //         arr[z] = arr[z];
+                    // }
+                    sourceBuffer.appendBuffer(arr);
+                    //  console.log('appendedBuffer');
+                }
+            }
+
+            function GET(url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.responseType = 'arraybuffer';
+
+                xhr.onload = function (e) {
+                    if (xhr.status != 200) {
+
+                        //console.warn('Unexpected status code ' + xhr.status + ' for ' + url);
+                        //sourceBuffer.removeEventListener('updateend', nextSegment);
+                        ms.endOfStream();
+                        return false;
+                    }
+                    callback(xhr.response);
+                };
+
+                xhr.send();
+            }
+
+            // video.onprogress = function(e){
+            //     //nextSegment();
+            // }
+        })();
+    </script>
+
 </body>
 </html>
